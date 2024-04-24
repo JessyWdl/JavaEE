@@ -1,8 +1,7 @@
 package com.jessy.entity.entites;
 
 import com.jessy.entity.exception.MonException;
-
-import static com.jessy.entity.utilitaire.Regex.*;
+import static com.jessy.entity.utlitaire.Regex.*;
 
 public class Societe {
 
@@ -55,7 +54,7 @@ public class Societe {
     public String getCommentaire(){return Commentaire;}
     public void setID(int ID) throws MonException {
         if (ID < 0){
-            throw new MonException("Id ne peut être négatif");
+            throw new MonException("ID ne peut être négatif");
         }
         this.ID = ID;
     }
@@ -92,6 +91,8 @@ public class Societe {
     public void setTel(String Tel)throws MonException{
         if (Tel == null || Tel.isEmpty()){
             throw new MonException("Le numéro de téléphone ne peut être vide");
+        } else if (Tel.length() < 10 || Tel.length() > 15) {
+            throw new MonException("Le numéro de téléphone est trop court ou trop long");
         }
         this.Tel = Tel;
     }

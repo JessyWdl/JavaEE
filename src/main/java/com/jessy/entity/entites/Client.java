@@ -4,7 +4,7 @@ import com.jessy.entity.exception.MonException;
 
 public class Client extends Societe {
     private Double ChiffreAffaire;
-    private int NbEmployes;
+    private Integer NbEmployes;
 
     public Client(String RaisonSociale, String NumRue, String NomRue, String CodePostal,
                   String Ville, String Tel, String Email, Double ChiffreAffaire, int NbEmployes, String Commentaire) throws MonException {
@@ -24,15 +24,21 @@ public class Client extends Societe {
         return NbEmployes;
     }
 
-    public void setChiffreAffaire(double ChiffreAffaire) throws MonException {
-        if (ChiffreAffaire <= 200) {
+    public void setChiffreAffaire(Double ChiffreAffaire) throws MonException {
+        if (ChiffreAffaire == 0.0){
+            throw new MonException("Chiffre d'affaire ne doit pas être vide");
+        }
+        else if (ChiffreAffaire < 200){
             throw new MonException("Chiffre d'affaire trop peu élevé");
         }
         this.ChiffreAffaire = ChiffreAffaire;
     }
 
-    public void setNbEmployes(int NbEmployes) throws MonException {
-        if (NbEmployes < 0) {
+    public void setNbEmployes(Integer NbEmployes) throws MonException {
+        if (NbEmployes == 0) {
+            throw new MonException("Le Nombre d'employés ne doit pas être vide");
+        }
+        else if (NbEmployes < 0) {
             throw new MonException("Nombre d'employés ne peut pas être négatif");
         }
         this.NbEmployes = NbEmployes;

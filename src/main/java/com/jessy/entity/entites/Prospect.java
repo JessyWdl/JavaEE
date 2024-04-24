@@ -2,10 +2,7 @@ package com.jessy.entity.entites;
 
 import com.jessy.entity.exception.MonException;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class Prospect extends Societe{
 
